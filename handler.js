@@ -150,7 +150,7 @@ export async function handler(chatUpdate) {
                 jadibotmd: false,
                 autobio: false,
                 antiPrivate: true,
-                autoread: false,
+                autoread: true,
                 antiSpam: true,
                 status: 0
             }
