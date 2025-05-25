@@ -137,22 +137,24 @@ export async function handler(chatUpdate) {
                     expired: 0,
                 }
             var settings = global.db.data.settings[this.user.jid]
-            if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
-            if (settings) {
-                if (!('self' in settings)) settings.self = false
-                if (!('jadibotmd' in settings)) settings.jadibotmd = true
-                if (!('autobio' in settings)) settings.autobio = false
-                if (!('antiPrivate' in settings)) settings.antiPrivate = false
-                if (!('autoread' in settings)) settings.autoread = false
-                if (!('antiSpam' in settings)) settings.antiSpam = false
-            } else global.db.data.settings[this.user.jid] = {
-                self: false,
-                jadibotmd: false,
-                autobio: false,
-                antiPrivate: true,
-                autoread: true,
-                antiSpam: true,
-                status: 0
+if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
+if (settings) {
+if (!('self' in settings)) settings.self = false
+if (!('jadibotmd' in settings)) settings.jadibotmd = true
+if (!('autobio' in settings)) settings.autobio = false
+if (!('antiPrivate' in settings)) settings.antiPrivate = false
+if (!('autoRead' in settings)) settings.autoRead = false
+if (!('autoread' in settings)) settings.autoread = false
+if (!('antiSpam' in settings)) settings.antiSpam = false
+} else global.db.data.settings[this.user.jid] = {
+self: false,
+jadibotmd: false,
+autobio: false,
+antiPrivate: true,
+autoRead: true,
+autoread: false,
+antiSpam: true,
+status: 0
             }
         } catch (e) {
             console.error(e)
