@@ -1,74 +1,85 @@
-require('dotenv').config(), require('rootpath')(), console.clear()
-const { spawn: spawn } = require('child_process'), path = require('path'), CFonts = require('cfonts'), chalk = require('chalk')
+import { join, dirname } from 'path'
+import { createRequire } from 'module'
+import { fileURLToPath } from 'url'
+import boxen from 'boxen'
+import { setupMaster, fork } from 'cluster';
+import { watchFile, unwatchFile } from 'fs';
+import cfonts from 'cfonts'
+import { createInterface } from 'readline'
+import yargs from 'yargs'
+import chalk from 'chalk'
+console.log('\n✰ Iniciando BOSSBOT ✰')
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const require = createRequire(__dirname)
+const { name, description, collaborators, author, version } = require(join(__dirname, './package.json'))
+const { say } = cfonts
+const rl = createInterface(process.stdin, process.stdout)
+const subtitleStyle = chalk.white.bold
+const responseStyle = chalk.dim.bold
 
-const unhandledRejections = new Map()
-process.on('uncaughtException', (err) => {
-   if (err.code === 'ENOMEM') {
-      console.error('Out of memory error detected. Cleaning up resources...');
-      // Lakukan tindakan pemulihan seperti membersihkan cache atau log
-   } else {
-      console.error('Uncaught Exception:', err)
-   }
+let activeCollaborators = ''
+for (const key in collaborators) {
+    if (collaborators.hasOwnProperty(key)) {
+        activeCollaborators += collaborators[key] + ', '
+    }
+}
+activeCollaborators = activeCollaborators.slice(0, -2);
+cfonts.say('ALEXN\nBOT', {
+    align: 'center',
+    gradient: ['red', 'blue']
 })
-
-process.on('unhandledRejection', (reason, promise) => {
-   unhandledRejections.set(promise, reason)
-   if (reason.code === 'ENOMEM') {
-      console.error('Out of memory error detected. Attempting recovery...');
-      Object.keys(require.cache).forEach((key) => {
-         delete require.cache[key]
-      })
-   } else {
-      console.log('Unhandled Rejection at:', promise, 'reason:', reason)
-   }
+cfonts.say(description, {
+    font: 'console',
+    align: 'center',
+    gradient: ['blue', 'magenta']
 })
-
-process.on('rejectionHandled', (promise) => {
-   unhandledRejections.delete(promise)
-})
-
-process.on('Something went wrong', function (err) {
-   console.log('Caught exception: ', err)
-})
-
+const message = `${subtitleStyle('Desarrollado por »')} ${responseStyle(author.name)}
+${subtitleStyle('Código basado por »')} ${responseStyle('BOSSBOT')}
+${subtitleStyle('Colaboradores activos »')} ${responseStyle(activeCollaborators)}
+${subtitleStyle('Versión »')} ${responseStyle(version)}`
+console.log(boxen(message, { padding: 1, margin: 1, borderStyle: 'double', borderColor: 'blue', float: 'center', }))
+var isRunning = false
+function start(file) {
+    if (isRunning) return
+    isRunning = true
+    let args = [join(__dirname, file), ...process.argv.slice(2)]
+    setupMaster({
+        exec: args[0],
+        args: args.slice(1),
+    })
+    let p = fork()
+    p.on('message', data => {
+        switch (data) {
+            case 'reset':
+                p.process.kill()
+                isRunning = false
+                start.apply(this, arguments)
+                break
+            case 'uptime':
+                p.send(process.uptime())
+                break
+        }
+    })
+    p.on('exit', (_, code) => {
+        isRunning = false
+        console.error('🚩 Error:\n', code)
+        process.exit()
+        if (code === 0) return
+        watchFile(args[0], () => {
+            unwatchFile(args[0])
+            start(file)
+        })
+    })
+    let opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
+    if (!opts['test'])
+        if (!rl.listenerCount()) rl.on('line', line => {
+            p.emit('message', line.trim())
+        })
+}
 process.on('warning', (warning) => {
-   if (warning.name === 'MaxListenersExceededWarning') {
-      console.warn('Potential memory leak detected:', warning.message)
-   }
+    if (warning.name === 'MaxListenersExceededWarning') {
+        console.warn('🚩 Se excedió el límite de Listeners en:')
+        console.warn(warning.stack)
+    }
 })
-
-function start() {
-   let args = [path.join(__dirname, 'client.js'), ...process.argv.slice(2)]
-   let p = spawn(process.argv[0], args, { stdio: ['inherit', 'inherit', 'inherit', 'ipc'] })
-      .on('message', data => {
-         if (data == 'reset') {
-            console.log('Restarting...')
-            p.kill()
-            delete p
-         }
-      })
-      .on('exit', code => {
-         console.error('Exited with code:', code)
-         start()
-      })
-}
-
-const major = parseInt(process.versions.node.split('.')[0], 10)
-if (major < 20) {
-   console.error(
-      `\n❌ This script requires Node.js 20+ to run reliably.\n` +
-      `   You are using Node.js ${process.versions.node}.\n` +
-      `   Please upgrade to Node.js 20+ to proceed.\n`
-   );
-   process.exit(1)
-}
-
-CFonts.say('NEOXR BOT', {
-   font: 'tiny',
-   align: 'center',
-   colors: ['system']
-}), CFonts.say('Github : https://github.com/neoxr/neoxr-bot', {
-   colors: ['system'],
-   font: 'console',
-   align: 'center'
-}), start()
+start('BOSSBOT.js')
