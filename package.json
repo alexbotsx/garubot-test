@@ -1,5 +1,5 @@
 {
-    "name": "SIABOT",
+    "name": "BOSSBOT",
     "version": "2.0.7",
     "description": "Simple WhatsApp Bot Multi Device",
     "main": "index.js",
@@ -20,22 +20,22 @@
     },
     "homepage": "https://github.com/Adrianmaze/SIABOT",
     "author": {
-        "name": "SIABOT"
+        "name": "BOSSBOT"
     },
     "collaborators": {
-        "col1": "@SIABOT",
+        "col1": "@BOSSBOT",
         "col2": "@Anuar"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Adrianmaze/SIABOT.git"
+        "url": "git+https://github.com/Adrianmaze/BOSSBOT.git"
     },
     "bugs": {
-        "url": "https://github.com/Adrianmaze/SIABOT/issues"
+        "url": "https://github.com/Adrianmaze/BOSSBOT/issues"
     },
     "license": "GPL-3.0-or-later",
     "dependencies": {
-        "@whiskeysockets/baileys": "github:ds6/meta",
+        "@whiskeysockets/baileys": "ds6/meta",
         "@SumiFX/Scraper": "github:SumiFX/SumiFX-Scraper",
         "@StarlightsTeam/Scraper": "github:StarlightsTeam/StarlightsTeam-Scraper",
         "@adiwajshing/keyed-db": "^0.2.4",
