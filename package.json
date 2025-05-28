@@ -17,6 +17,7 @@
         "test2": "nodemon index.js",
         "eslint": "eslint .",
         "eslintfix": "eslint --,
+      },    
   "author": "Russell",
   "license": "ISC",
   "dependencies": {
