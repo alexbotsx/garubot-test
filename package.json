@@ -33,7 +33,7 @@
     "bugs": {
         "url": "https://github.com/Adrianmaze/BOSSBOT/issues"
     },
-    "license": "GPL-3.0-or-later",
+    "license": "ISC",
     "dependencies": {
         "@whiskeysockets/baileys": "github:ds6/meta",
         "@SumiFX/Scraper": "github:SumiFX/SumiFX-Scraper",
@@ -43,14 +43,14 @@
         "@bochilteam/scraper-sosmed": "^1.0.5",
         "@xct007/frieren-scraper": "^0.0.2",
         "@ibaraki-douji/pixivts": "^2.4.1",
-        "awesome-phonenumber": "^3.4.0",
+        "awesome-phonenumber": "^5.10.0",
         "ruhend-scraper": "^7.0.4",
         "node-cache": "5.1.2",
         "gradient-string": "^2.0.2",
         "google-libphonenumber": "3.2.38",
         "imagemaker.js": "^2.0.4",
         "senna-fg": "0.0.9",
-        "axios": "^1.1.2",
+        "axios": "^0.24.0",
         "acrcloud": "^1.4.0",
         "form-data": "^4.0.0",
         "cfonts": "^3.3.0",
