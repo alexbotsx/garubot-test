@@ -18,7 +18,7 @@
         "eslint": "eslint .",
         "eslintfix": "eslint --fix ."
     },
-    "homepage": "https://github.com/Adrianmaze/BOSSBOT
+    "homepage": "https://github.com/Adrianmaze/BOSSBOT.git"
     "author": {
         "name": "BOSSBOT"
     },
