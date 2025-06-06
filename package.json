@@ -1,5 +1,5 @@
 {
-    "name": "Garubot ",
+    "name": "GARUBOT ",
     "version": "2.0.7",
     "description": "Simple WhatsApp Bot Multi Device",
     "main": "index.js",
@@ -20,18 +20,18 @@
     },
     "homepage": "https://github.com/Adrianmaze/SIABOT",
     "author": {
-        "name": "Garubot "
+        "name": "GARUBOT "
     },
     "collaborators": {
-        "col1": "@Garubot ",
+        "col1": "@GARUBOT ",
         "col2": "@Anuar"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Adrianmaze/Garubot .git"
+        "url": "git+https://github.com/Adrianmaze/GARUBOT .git"
     },
     "bugs": {
-        "url": "https://github.com/Adrianmaze/Garubot /issues"
+        "url": "https://github.com/Adrianmaze/GARUBOT /issues"
     },
     "license": "GPL-3.0-or-later",
     "dependencies": {

@@ -1,4 +1,4 @@
-//Codígo de Garubot 
+//Codígo de GARUBOT 
 
 import fs from 'fs';
 import path from 'path';

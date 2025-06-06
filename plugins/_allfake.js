@@ -44,7 +44,7 @@ handler.all = async function (m) {
     global.done = '✅'
     global.error = '✖️'
 
-    //Emojis determinado de Garubot  Bot
+    //Emojis determinado de GARUBOT  Bot
     global.emoji = '🍁'
     global.emoji2 = '⭐'
     global.emoji3 = '✨️'

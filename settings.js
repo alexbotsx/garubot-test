@@ -47,8 +47,8 @@ global.vs = '2.0.7'
 global.languaje = 'Español'
 global.nameqr = 'Sisked-x'
 global.namebot = '@ignacio.dzn'
-global.sessions = 'Garubot Session'
-global.jadi = 'Garubot JadiBot'
+global.sessions = 'GARUBOT Session'
+global.jadi = 'GARUBOT JadiBot'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
