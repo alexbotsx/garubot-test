@@ -9,7 +9,7 @@ let handler = async(m, { isOwner, isAdmin, conn, text, participants, args, comma
 ${oi}\n\n ── 𝑬𝑻𝑰𝑸𝑼𝑬𝑻𝑨\n`
   for (let mem of participants) {
   teks += `🕷️🕸️@${mem.id.split('@')[0]}\n`}
-  teks += `└𝑮𝒂𝒓𝒖𝑩𝒐𝒕`
+  teks += `└ZUGAWA`
   conn.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, )
   }
   handler.help = ['tagall <mesaje>','invocar <mesaje>']
