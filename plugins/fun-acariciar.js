@@ -1,4 +1,4 @@
-//Codígo de GARUBOT 
+//Codígo de ZUGAWABOT 
 
 import fs from 'fs';
 import path from 'path';
